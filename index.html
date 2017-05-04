@@ -1,12 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" ng-app="superheroApp">
 <head>
-  <meta charset="UTF-8">
-  <title>Superhero Phone Book</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <title>Superhero Phonebook</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="js/app.js"></script>
 </head>
-<body>
+<body ng-controller="SuperheroController as vm">
+  <h1>Superheroes</h1>
+  <div class="search">
+    <select name="select">
+      <option selected>Search by</option>
+      <option value="value1">Name</option>
+      <option value="value2">Number</option>
+      <option value="value3">Group</option>
+    </select>
+    <input type="text" ng-model="vm.searchSuperhero">
+  </div>
 
-  <script src="app.js"></script>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Group</th>
+      </tr>
+    </thead>
+    <!-- ng-class="{Marvel: 'marvel', DC: 'dc', Independent: 'indenpendent'}[superhero.group]" -->
+    <tbody >
+        <tr ng-repeat="superhero in vm.superheroes | filter: {name: vm.searchSuperhero}" ng-class="superhero.group">
+          <th><input type="checkbox" ng-model="selectedHero">Show img<img class="picture" ng-show="selectedHero" src ="{{superhero.img}}" ></th>
+          <th>{{superhero.name}}</th>
+          <th>{{superhero.number}}</th>
+          <th>{{superhero.group}}</th>
+        </tr>
+    </tbody>
+  </table>
+
 </body>
 </html>

@@ -1,0 +1,28 @@
+.Marvel {
+  background-color: #5cb85c;
+}
+
+.DC {
+  background-color: #428bca;
+}
+
+.Independent {
+  background-color: #5bc0de;
+}
+
+.picture {
+  width: 300px;
+}
+
+.indexPhoto {
+  width: 40px;
+}
+
+th {
+  vertical-align: middle;
+}
+
+
+input[type="checkbox"]:checked + th {
+ font-size: 30px;
+}
